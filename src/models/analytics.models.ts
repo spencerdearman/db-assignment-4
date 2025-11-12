@@ -197,7 +197,7 @@ export class FactRental {
 
     @Index() // Index for time-series analysis
     @Column({ name: 'date_key_returned', type: 'int', nullable: true })
-    dateKeyReturned: number;
+    dateKeyReturned: number | null;
 
     @Index() // Index for joins
     @Column({ name: 'film_key' })
@@ -215,7 +215,7 @@ export class FactRental {
     staffId: number;
 
     @Column({ name: 'rental_duration_days', type: 'int', nullable: true })
-    rentalDurationDays: number;
+    rentalDurationDays: number | null;
 }
 
 @Entity('fact_payment')

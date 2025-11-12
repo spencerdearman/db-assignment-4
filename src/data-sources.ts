@@ -1,10 +1,9 @@
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
-
-// Import ALL your models from both files
 import * as SourceModels from './models/source.models';
 import * as AnalyticsModels from './models/analytics.models';
 
+/* sql datasource */
 export const mysqlDataSource = new DataSource({
     type: 'mysql',
     host: 'localhost',
@@ -16,6 +15,7 @@ export const mysqlDataSource = new DataSource({
     logging: false,
 });
 
+/* sqlite datasource */
 export const sqliteDataSource = new DataSource({
     type: 'sqlite',
     database: 'analytics.db',

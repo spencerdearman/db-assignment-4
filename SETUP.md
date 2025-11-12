@@ -1,6 +1,6 @@
 
 # Delete the old file
-`rm analytics.db`
+rm analytics.db
 
 # Re-create the empty tables
 npx ts-node src/index.ts init

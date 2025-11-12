@@ -316,8 +316,8 @@ export class Rental {
     @Column({ name: 'customer_id' })
     customerId: number;
 
-    @Column({ name: 'return_date', nullable: true })
-    returnDate: Date;
+    @Column({ name: 'return_date', nullable: true, type: 'datetime' })
+    returnDate: Date | null;
 
     @Column({ name: 'staff_id' })
     staffId: number;
