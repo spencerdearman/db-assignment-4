@@ -138,8 +138,7 @@ test('4. Incremental command (updates)', async () => {
   const originalActor = await targetRepo.findOneBy({ actorId: 1 });
   expect(originalActor?.firstName).toBe('SPENCER');
 
-  // ACT: Update the actor in the REAL MySQL database
-  // We must pause for 1 second to ensure the last_update timestamp is different
+  /* update the actor in the MySQL db */
   await new Promise((res) => setTimeout(res, 1000));
   await realMysql.getRepository(Actor).save({
     actorId: 1,
@@ -147,10 +146,10 @@ test('4. Incremental command (updates)', async () => {
     lastName: 'DEARMAN',
   });
 
-  // Run the command
+  /* run incremental command */
   await runCli('incremental');
 
-  // ASSERT: Check if the actor was updated in the TEST SQLite DB
+  /* check if the actor was updated in test SQlite db */
   const updatedActor = await targetRepo.findOneBy({ actorId: 1 });
   expect(updatedActor?.firstName).toBe('SPENCER');
   expect(updatedActor?.lastName).toBe('DEARMAN');
